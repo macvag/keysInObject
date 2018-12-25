@@ -2,7 +2,7 @@
   "name": "keys-in-object",
   "version": "1.0.0",
   "description": "Find if the provided key of an object exists and retrieve the value(s)",
-  "main": "index.js",
+  "main": "./build/keysInObject.js",
   "scripts": {
     "build": "./node_modules/.bin/rollup src/index.js --format umd --name keysInObjects --file build/keysInObject.js",
     "lint" : "./node_modules/.bin/eslint ./src/index.js",
