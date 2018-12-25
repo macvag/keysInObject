@@ -1,6 +1,6 @@
 {
   "name": "keys-in-object",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Find if the provided key of an object exists and retrieve the value(s)",
   "main": "./build/keysInObject.js",
   "scripts": {
