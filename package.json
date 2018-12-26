@@ -18,11 +18,11 @@
   "author": "Vangelis Makrynikolas",
   "repository": {
     "type": "git",
-    "url": "https://github.com/macvag/KeyInObject"
+    "url": "https://github.com/macvag/KeysInObject"
   },
-  "homepage": "https://github.com/macvag/KeyInObject#readme",
+  "homepage": "https://github.com/macvag/KeysInObject#readme",
   "bugs": {
-    "url": "https://github.com/macvag/KeyInObject/issues",
+    "url": "https://github.com/macvag/KeysInObject/issues",
     "email": "macvag@gmail.com"
   },
   "license": "MIT",
