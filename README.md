@@ -15,18 +15,28 @@ Node.js
 ```
 var keysInObject = require('keys-in-object');
 
-var obj = {
-	a: 'Test',
-	b: true,
-	c: 3,
-    d: {
-        c: 'here'
-    }
+var users = {
+	id_1: {
+        name: 'John Doe',
+        emain: 'johndoe@test.com'
+    },
+	id_2: {
+        name: 'Hohn Moe',
+        emain: 'hohnmoe@test.com'
+    },
+	id_3: {
+        name: 'Joon Doo',
+        emain: 'joondoo@test.com'
+    },
+    id_4: {
+        name: 'Johnny Foe',
+        emain: 'johnnyfoe@test.com'
+    },
 };
 
-var arrayOfKeyValues = keysInObject(obj, 'c');
+var arrayOfKeyValues = keysInObject(users, 'name');
 console.log(arrayOfKeyValues)
-// [3, 'here']
+// ['John Doe', 'Hohn Moe', 'Joon Doo', 'Johnny Foe']
 ```
 
 Browser

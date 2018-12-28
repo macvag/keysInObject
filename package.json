@@ -11,9 +11,9 @@
     "prepublish": "npm test"
   },
   "keywords": [
-    "Nested",
-    "Object",
-    "Key"
+    "Object keys",
+    "Nested Object",
+    "Object Values"
   ],
   "author": "Vangelis Makrynikolas",
   "repository": {
