@@ -18,24 +18,26 @@ var keysInObject = require('keys-in-object');
 var users = {
 	id_1: {
         name: 'John Doe',
-        emain: 'johndoe@test.com'
+        email: 'johndoe@test.com'
     },
 	id_2: {
         name: 'Hohn Moe',
-        emain: 'hohnmoe@test.com'
+        email: 'hohnmoe@test.com'
     },
 	id_3: {
         name: 'Joon Doo',
-        emain: 'joondoo@test.com'
+        email: 'joondoo@test.com'
     },
     id_4: {
-        name: 'Johnny Foe',
-        emain: 'johnnyfoe@test.com'
-    },
+        user_info: {
+            name: 'Johnny Foe',
+            email: 'johnnyfoe@test.com'
+        }        
+    }
 };
 
-var arrayOfKeyValues = keysInObject(users, 'name');
-console.log(arrayOfKeyValues)
+var arrayOfUserNames = keysInObject(users, 'name');
+console.log(arrayOfUserNames)
 // ['John Doe', 'Hohn Moe', 'Joon Doo', 'Johnny Foe']
 ```
 
@@ -51,14 +53,72 @@ Include the keysInObject.js file into your html script tags
     <body>
         <script src="./path to file/keysInObject.js"></script>
         <script>
-            var obj = {
-                'a': true
-            }
-            var results = keysInObjects(obj,'a');
-            console.log(results);
+            var users = {
+	            id_1: {
+                    name: 'John Doe',
+                    email: 'johndoe@test.com'
+                },
+	            id_2: {
+                    name: 'Hohn Moe',
+                    email: 'hohnmoe@test.com'
+                },
+	            id_3: {
+                    name: 'Joon Doo',
+                    email: 'joondoo@test.com'
+                },
+                id_4: {
+                    user_info: {
+                        name: 'Johnny Foe',
+                        email: 'johnnyfoe@test.com'
+                    }        
+                }
+            };
+
+            var arrayOfUserNames = keysInObject(users, 'name');
+            console.log(arrayOfUserNames)
         </script>
     </body>
 </html>
+```
+
+## Additional feature
+If you want to strip the unnecessary keys from the object and also to keep it's structure you can pass an optional Boolean Variable. 
+
+```
+var userNames = keysInObject(users, 'name', true);
+console.log(userNames)
+/*
+{
+  id_1: {
+    name: 'John Doe'
+  },
+  id_2: {
+  	name: 'Hohn Moe'
+  },
+  id_3: {
+  	name: 'Joon Doo'
+  },
+  id_4: {
+    user_info: {
+      name: 'Johnny Foe'
+    }
+  }
+}
+*/
+
+// Or if you request for user_info
+var userInfo = keysInObject(users, 'user_info', true);
+console.log(userInfo)
+/*
+{
+  id_4:{
+    user_info: {
+      name: 'Johnny Foe',
+      email: 'johnnyfoe@test.com'
+    }
+  }
+}
+*/
 ```
 
 ## Tests

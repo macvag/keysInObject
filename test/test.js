@@ -4,20 +4,22 @@ const assert = require('assert');
 const users = {
 	id_1: {
 		name: 'John Doe',
-		emain: 'johndoe@test.com'
+		email: 'johndoe@test.com'
 	},
 	id_2: {
 		name: 'Hohn Moe',
-		emain: 'hohnmoe@test.com'
+		email: 'hohnmoe@test.com'
 	},
 	id_3: {
 		name: 'Joon Doo',
-		emain: 'joondoo@test.com'
+		email: 'joondoo@test.com'
 	},
 	id_4: {
-		name: 'Johnny Foe',
-		emain: 'johnnyfoe@test.com'
-	},
+		user_info: {
+			name: 'Johnny Foe',
+			email: 'johnnyfoe@test.com'
+		}
+	}
 };
 
 describe('keysInObject', function () {
@@ -26,7 +28,7 @@ describe('keysInObject', function () {
 		it('should return Array with nested object of "id_1"', function () {
 			assert.deepEqual(keysInObject(users, 'id_1'), [{
 				name: 'John Doe',
-				emain: 'johndoe@test.com'
+				email: 'johndoe@test.com'
 			}]);
 		});
 
@@ -40,6 +42,45 @@ describe('keysInObject', function () {
 
 		it('should return empty Array for non existance key', function () {
 			assert.deepEqual(keysInObject(users, 'id_5'), []);
+		});
+
+		it('should return id_1 values keeping the object structure', function () {
+			assert.deepEqual(keysInObject(users, 'id_1', true), {
+				id_1: {
+					name: 'John Doe',
+					email: 'johndoe@test.com'
+				}
+			});
+		});
+
+		it('should return id_4 user_info object values keeping the structure', function () {
+			assert.deepEqual(keysInObject(users, 'user_info', true), {
+				id_4: {
+					user_info: {
+						name: 'Johnny Foe',
+						email: 'johnnyfoe@test.com'
+					}
+				}
+			});
+		});
+
+		it('should keep object structure obtaining only the required key', function () {
+			assert.deepEqual(keysInObject(users, 'name', true), {
+				id_1: {
+					name: 'John Doe'
+				},
+				id_2: {
+					name: 'Hohn Moe'
+				},
+				id_3: {
+					name: 'Joon Doo'
+				},
+				id_4: {
+					user_info: {
+						name: 'Johnny Foe'
+					}
+				}
+			});
 		});
 	});
 

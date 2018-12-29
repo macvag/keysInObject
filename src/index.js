@@ -1,5 +1,7 @@
 // Variable to store key's values
 let result = [];
+let obj = {};
+let parent_key = '';
 
 /**
  * Main function Entry that returns the result 
@@ -7,15 +9,18 @@ let result = [];
  * @param {string} key 
  * @returns {Array}
  */
-export default function searchForKeys(object, key) {
-	// Check for possible errors
+export default function searchForKeys(object, key, keep_structure) {
+	// Check for possible errors		
 	checkObjectForErrors(object);
-	findRecursiveInObject(object, key);
-	const arrayToReturn = result;
-	result = [];
-	if (!arrayToReturn.length) {
-		return [];
+	findRecursiveInObject(object, key, keep_structure);
+
+	if (keep_structure) {
+		const objToReturn = obj;
+		obj = {};		
+		return objToReturn;
 	} else {
+		const arrayToReturn = result;
+		result = [];
 		return arrayToReturn;
 	}
 }
@@ -24,15 +29,41 @@ export default function searchForKeys(object, key) {
  * @param {Object} object 
  * @param {string} key 
  */
-function findRecursiveInObject(object, key) {	
-	for (var prop in object) {
-		if (object[key] === object[prop]) {
+
+function findRecursiveInObject(object, key, keep_structure) {
+	for (var prop in object) {		
+		let temp = {};
+		if (keep_structure && object[key] === object[prop]) {
+			if (parent_key.split('.').length > 1) {
+				const keys = parent_key.split('.');
+				for (let i = keys.length - 1; i >= 0; i--) {					
+					if (i === keys.length-1) {
+						temp[keys[i]] = {};
+						temp[keys[i]][prop] = object[prop];
+					} else if( i === 0) {							
+						obj[keys[i]] = temp;						
+					} else {
+						temp[keys[i]] = temp;
+					}				
+				}				
+				//console.log(temp);
+			} else {
+				if(parent_key) {
+					temp[prop] = object[prop];
+					obj[parent_key] = temp;
+				} else {
+					obj[prop] = object[prop];
+				}			
+			}			
+		}
+		else if (object[key] === object[prop]) {
 			result.push(object[prop]);
-		} else {
+			parent_key = '';
+		} else if (typeof object[prop] === 'object') {
 			// If nested object go deeper
-			if (typeof object[prop] === 'object') {
-				findRecursiveInObject(object[prop], key);
-			}
+			parent_key += parent_key ? '.' + prop : prop;			
+			findRecursiveInObject(object[prop], key, keep_structure);
+			parent_key = '';
 		}
 	}
 }
