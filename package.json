@@ -4,7 +4,7 @@
   "description": "Find if the provided key of an object exists and retrieve the value(s)",
   "main": "./build/keysInObject.js",
   "scripts": {
-    "build": "./node_modules/.bin/rollup src/index.js --format umd --name keysInObjects --file build/keysInObject.js",
+    "build": "./node_modules/.bin/rollup -c",
     "lint": "./node_modules/.bin/eslint ./src/index.js",
     "pretest": "npm run build",
     "test": "./node_modules/.bin/mocha",
@@ -29,6 +29,7 @@
   "devDependencies": {
     "eslint": "^5.11.0",
     "mocha": "^5.2.0",
-    "rollup": "^0.68.2"
+    "rollup": "^0.68.2",
+    "rollup-plugin-uglify": "^6.0.2"
   }
 }

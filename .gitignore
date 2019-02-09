@@ -6,3 +6,5 @@ build
 npm-shrinkwrap.json
 yarn.lock
 package-lock.json
+#Editor settings
+.vscode

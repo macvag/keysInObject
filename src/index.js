@@ -1,7 +1,7 @@
 // Variable to store key's values
-let result = [];
-let obj = {};
-let parent_key = '';
+var result = [];
+var obj = {};
+var parent_key = '';
 
 /**
  * Main function Entry that returns the result 
@@ -15,11 +15,11 @@ export default function searchForKeys(object, key, keep_structure) {
 	findRecursiveInObject(object, key, keep_structure);
 
 	if (keep_structure) {
-		const objToReturn = obj;
+		var objToReturn = obj;
 		obj = {};		
 		return objToReturn;
 	} else {
-		const arrayToReturn = result;
+		var arrayToReturn = result;
 		result = [];
 		return arrayToReturn;
 	}
@@ -32,11 +32,11 @@ export default function searchForKeys(object, key, keep_structure) {
 
 function findRecursiveInObject(object, key, keep_structure) {
 	for (var prop in object) {		
-		let temp = {};
+		var temp = {};
 		if (keep_structure && object[key] === object[prop]) {
 			if (parent_key.split('.').length > 1) {
-				const keys = parent_key.split('.');
-				for (let i = keys.length - 1; i >= 0; i--) {					
+				var keys = parent_key.split('.');
+				for (var i = keys.length - 1; i >= 0; i--) {					
 					if (i === keys.length-1) {
 						temp[keys[i]] = {};
 						temp[keys[i]][prop] = object[prop];
