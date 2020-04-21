@@ -8,7 +8,10 @@
     "lint": "./node_modules/.bin/eslint ./src/index.js",
     "pretest": "npm run build",
     "test": "./node_modules/.bin/mocha",
-    "prepublish": "npm test"
+    "prepublish": "npm test",
+    "preversion": "npm test",
+    "version": "npm run build && git add -A build",
+    "postversion": "git push && git push --tags && rm -rf build/temp"
   },
   "keywords": [
     "Object keys",
@@ -30,6 +33,6 @@
     "eslint": "^5.11.0",
     "mocha": "^5.2.0",
     "rollup": "^0.68.2",
-    "rollup-plugin-uglify": "^6.0.2"
+    "rollup-plugin-uglify": "^6.0.4"
   }
 }
