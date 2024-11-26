@@ -31,8 +31,8 @@
   "license": "MIT",
   "devDependencies": {
     "eslint": "^5.11.0",
-    "mocha": "^5.2.0",
-    "rollup": "^0.68.2",
-    "rollup-plugin-uglify": "^6.0.4"
+    "mocha": "^10.8.2",
+    "rollup": "^2.79.2",
+    "rollup-plugin-uglify": "^5.0.2"
   }
 }
